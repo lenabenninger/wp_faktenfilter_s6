@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1920px" height="1080px" viewBox="0 0 1920 1080" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>placeholder-picture@1x</title>
+    <g id="placeholder-picture" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#FFFFFF" x="0" y="0" width="1920" height="1080"></rect>
+        <rect id="background" fill="#F1F5F9" x="0" y="0" width="1920" height="1080"></rect>
+        <path d="M820,611 L900.251325,530.307016 C913.919525,516.564328 936.081,516.564328 949.7485,530.307016 L1030,611 M995,575 L1022.7515,547.250052 C1036.419,533.583316 1058.581,533.583316 1072.2485,547.250052 L1100,575 M855,680 L1065,680 C1084.3305,680 1100,664.3305 1100,645 L1100,435 C1100,415.670025 1084.3305,400 1065,400 L855,400 C835.670025,400 820,415.670025 820,435 L820,645 C820,664.3305 835.670025,680 855,680 Z" id="icon-photography" stroke="#4A5568" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"></path>
+    </g>
+</svg>

@@ -1,0 +1,10 @@
+{% extends "base.twig" %}
+
+{% block content %}
+    <h2>Aktuelle Faktenfilter</h2>
+    <div class="l-cards">
+        {% for post in posts %}
+            {% include "partial/teaser.twig" with {post:post} %}
+        {% endfor %}
+    </div>   
+{% endblock %}

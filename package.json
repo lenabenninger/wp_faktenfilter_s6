@@ -2,5 +2,8 @@
   "devDependencies": {
     "parcel-namer-rewrite": "^2.10.3-rc.2",
     "rimraf": "^6.0.1"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.3"
   }
 }

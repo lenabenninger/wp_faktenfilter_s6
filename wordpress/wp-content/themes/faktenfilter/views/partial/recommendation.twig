@@ -1,0 +1,14 @@
+
+  <div class="card-recom-wide">
+    <div class="card-recom-info">
+      <h3>{{ post.title }}</h3>
+      <a href="{{ post.link }}">Mehr erfahren</a>
+    </div>
+    <div>
+    {% if post.thumbnail %}
+      <img src="{{ post.thumbnail.src('large') }}" alt="{{ post.title }}" />
+    {% else %}
+      <img src="/path/to/fallback.jpg" alt="Fallback image" />
+    {% endif %}
+    </div>
+  </div>

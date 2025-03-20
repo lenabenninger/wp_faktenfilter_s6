@@ -21,26 +21,23 @@
 				</div>
 			{% endblock %}
 		</header>
-
-		<section id="content" role="main" class="content-wrapper">
+		
+<!-- start: main content are -->
+	<main>
+		<article id="content" role="main" class="content-wrapper">
 			{% if title %}<h1>{{title}}</h1>{% endif %}
 			<div class="wrapper">
 				{% block content %}
 					Sorry, no content
 				{% endblock %}
 			</div>
-			{% if sidebar %}
-				<aside class="layout-sidebar">
-					{{sidebar}}
-				</aside>
-			{% endif %}
-		</section>
+		</article>
+	</main>
 
-		{% block footer %}
-			<footer id="footer">
+		{% block footer %}	
 				{% include 'footer.twig' %}
-			</footer>
 			{{ function('wp_footer') }}
 		{% endblock %}
+	<!-- start: main content are -->
 	</body>
 </html>

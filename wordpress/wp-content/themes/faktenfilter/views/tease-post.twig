@@ -1,9 +1,58 @@
-{% extends "tease.twig" %}
+{# {% extends "tease.twig" %}
 
 {% block content %}
-	<h2 class="h2"><a href="{{post.link}}">{{ post.title }}</a></h2>
+{% for post in posts %}
+  <div class="card-long">
+    <div class="card-long-info">
+      <h3>{{ post.title }}</h3>
+      <button>
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="red"
+          stroke-width="1"
+          stroke-linecap="miter"
+          stroke-linejoin="miter"
+        >
+          <path
+            d="M12 21L3 12C1 9 3 4 7 4c2 0 3.5 1.5 5 3 1.5-1.5 3-3 5-3 4 0 6 5 4 8l-9 9z"
+          />
+        </svg>
+      </button>
+      <a href="{{ post.link }}">Mehr lesen</a>
+    </div>
+    {% if post.thumbnail %}
+      <img src="{{ post.thumbnail.src('large') }}" alt="{{ post.title }}" />
+    {% else %}
+      <img src="/path/to/fallback.jpg" alt="Fallback image" />
+    {% endif %}
+  </div>
+{% endfor %}
+
+
+	{# <h2 class="h2"><a href="{{post.link}}">{{ post.title }}</a></h2>
 		<p>{{ post.excerpt({ words:5, read_more: "Keep reading" }) }}</p>
 		{% if post.thumbnail.src %}
 			<img src="{{ post.thumbnail.src }}" />
-		{% endif %}
-{% endblock %}
+		{% endif %} #}
+{# {% endblock %} #}
+
+{# partials/teaser.twig #}
+{% for post in posts %}
+  <div class="card-long">
+    <div class="card-long-info">
+      <h3>{{ post.title }}</h3>
+      <button>
+        <svg viewBox="0 0 24 24" fill="none" stroke="red" stroke-width="1" stroke-linecap="miter" stroke-linejoin="miter">
+          <path d="M12 21L3 12C1 9 3 4 7 4c2 0 3.5 1.5 5 3 1.5-1.5 3-3 5-3 4 0 6 5 4 8l-9 9z"/>
+        </svg>
+      </button>
+      <a href="{{ post.link }}">Mehr lesen</a>
+    </div>
+    {% if post.thumbnail %}
+      <img src="{{ post.thumbnail.src('large') }}" alt="{{ post.title }}" />
+    {% else %}
+      <img src="/path/to/fallback.jpg" alt="Fallback image" />
+    {% endif %}
+  </div>
+{% endfor %}

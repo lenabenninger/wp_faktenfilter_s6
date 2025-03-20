@@ -1,0 +1,32 @@
+{% extends "base.twig" %}
+
+{% block content %}
+      <div class="container">
+        <div class="row">
+          <div class="col-5">
+            <h3 class="article-h3 description-title">{{post.title}}</h3>
+          </div>
+          <div class="col-7">
+            <p class="description-text">{{post.content}}</p>
+          </div>
+        </div>
+      </div>
+     <div class="container">
+        <div class="row">
+          <div class="col-4">
+            {% include "tease.twig" %}
+          </div>
+        </div>
+      </div>
+
+	{# <div class="content-wrapper">
+		<article class="post-type-{{post.post_type}}" id="post-{{post.ID}}">
+			<section class="article-content">
+				<h1 class="article-h1">{{post.title}}</h1>
+				<div class="article-body">
+					{{post.content}}
+				</div>
+			</section>
+		</article>
+	</div><!-- /content-wrapper --> #}
+{% endblock %}

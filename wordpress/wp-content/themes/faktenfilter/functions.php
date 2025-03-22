@@ -7,6 +7,15 @@
  * @since Timber 0.1
  */
 
+ add_shortcode('teaser_block', function($atts) {
+    $context = Timber::context();
+    ob_start();
+    Timber::render('partial/teaser.twig', $context);
+    return ob_get_clean();
+});
+
+
+
  function theme_setup() {
     // Activer la prise en charge des balises <title>
     add_theme_support('title-tag');

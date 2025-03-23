@@ -29,9 +29,9 @@
 {% extends "base.twig" %}
 
 {% block content %}
+
 <div class="section">
     <h2>Aktuelle Faktenfilter</h2>
-
     <div class="l-cards">
         {% for post in allgemein_posts %}
             {% include "partial/teaser.twig" with { post: post } %}
@@ -39,11 +39,10 @@
             <p>Keine "Allgemein"-Beiträge gefunden.</p>
         {% endfor %}
     </div>   
-    </div>
+</div>
 
 <div class="section">
-        <h2>Hörenswert</h2>
-
+    <h2>Hörenswert</h2>
     <div class="l-cards">
         {% set first_empfehlung = empfehlung_post|first %}
         {% if first_empfehlung %}
@@ -52,6 +51,13 @@
             <p>Keine "Empfehlung"-Beiträge gefunden.</p>
         {% endif %}
     </div> 
-    </div>
-{% endblock %}
+</div>
 
+<div class="section">
+    <h2>Mitreden</h2>
+    <div class="l-cards">
+{% include 'partial/mitreden.twig' with { post: leserbrief_page } %}
+    </div>
+</div>
+
+{% endblock %}

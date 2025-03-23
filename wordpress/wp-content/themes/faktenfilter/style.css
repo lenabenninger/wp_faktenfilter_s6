@@ -82,7 +82,6 @@ p {
 .card-recom::before {
   background-color: var(--foreground);
   bottom: 0;
-
   height: 100%;
   left: 0;
   mix-blend-mode: screen;
@@ -130,11 +129,6 @@ p {
   padding: 0 20px;
   justify-content: flex-end;
   align-items: center;
-  background: var(--orange-medium);
-}
-
-.cta-light {
-  color: var(--black);
   font-family: "Oswald";
   font-size: 23px;
   font-weight: 300;
@@ -142,9 +136,25 @@ p {
   text-transform: uppercase;
 }
 
+.cta-light {
+  color: var(--black);
+  background: var(--orange-medium);
+}
+
+.cta-dark {
+  color: var(--orange-light);
+  background-color: var(--orange-dark);
+  flex-grow: 1;
+}
+
 .card-interaction {
   display: flex;
   justify-content: space-between;
+  align-self: stretch;
+}
+
+.card-interaction-no-like {
+  display: flex;
   align-self: stretch;
 }
 
@@ -198,3 +208,7 @@ p {
   flex-direction: column;
   gap: 20px;
 }
+
+/* .page-description-invisible {
+  display: none;
+} */

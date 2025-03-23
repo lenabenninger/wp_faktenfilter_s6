@@ -13,6 +13,21 @@ $context['empfehlung_post'] = Timber::get_posts([
     'category_name'  => 'empfehlung',
 ]);
 
+// Fetch "Leserbrief" page by slug
+$page = get_page_by_path('leserbrief'); // Search for the page by its slug
+
+if ($page) {
+    // If the page is found, get its details and pass it to the Twig template
+    $context['leserbrief_page'] = Timber::get_post($page->ID);
+} else {
+    // Debugging: log an error if the page wasn't found
+    error_log('Page "leserbrief" not found!');
+}
+
+// Render the front-page.twig template and pass the context to it
 Timber::render('front-page.twig', $context);
 ?>
+
+
+
 

@@ -9,23 +9,9 @@
     </div>
   </div>
   <div class="card-recom-info">
-    <h3>{{ post.title }}</h3>
-    <div class="l-preview-text">
-    <p class="preview-text">
-      {% if post.excerpt %}
-        {{ post.excerpt }}
-      {% else %}
-        {{ post.content | slice(0, 100) }}... <!-- Show first 100 characters if no excerpt -->
-      {% endif %}
-    </p>
+    <h3>{{ post.content|split('<p>')[1]|split('</p>')[0] }}</h3>
     <div class="card-interaction-no-like">
-      <a class="cta cta-dark" href="{{ post.link }}">Mehr lesen</a>
-    </div>
+      <a class="cta cta-dark" href="{{ leserbrief_page.link }}">Mehr lesen</a>
     </div>
   </div>
 </div>
-
-
-
-
-

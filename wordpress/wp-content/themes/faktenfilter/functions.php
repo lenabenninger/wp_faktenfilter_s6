@@ -126,3 +126,39 @@ add_filter( 'get_the_excerpt', 'remove_auto_read_more' );
 // }
 
 
+//select faktenfilter to write leserbrief about
+
+function display_posts_radio_buttons($atts) {
+    // Set up defaults
+    $atts = shortcode_atts([
+        'number' => 5, // Number of posts to display (default to 5)
+        'category' => 'Allgemein', // Category name to filter by
+    ], $atts);
+
+    // Query for posts in the "Allgemein" category
+    $args = [
+        'posts_per_page' => $atts['number'],
+        'category_name' => $atts['category'], // Filter by category slug
+    ];
+    $posts = get_posts($args);
+
+    // Check if posts exist
+    if (empty($posts)) {
+        return '<p>No posts found in the "Allgemein" category.</p>';
+    }
+
+    // Start the output for radio buttons
+    $output = '';
+
+    // Loop through the posts and create radio buttons
+    foreach ($posts as $post) {
+        $output .= '<label>';
+        // Add the class .select-post to the radio button
+        $output .= '<input type="radio" name="selected_post" value="' . esc_attr($post->ID) . '" class="select-post">';
+        $output .= esc_html($post->post_title);
+        $output .= '</label><br>';
+    }
+
+    return $output;
+}
+add_shortcode('posts_radio_buttons', 'display_posts_radio_buttons');

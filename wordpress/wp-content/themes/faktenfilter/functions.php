@@ -7,12 +7,12 @@
  * @since Timber 0.1
  */
 
- add_shortcode('teaser_block', function($atts) {
-    $context = Timber::context();
-    ob_start();
-    Timber::render('partial/teaser.twig', $context);
-    return ob_get_clean();
-});
+//  add_shortcode('teaser_block', function($atts) {
+//     $context = Timber::context();
+//     ob_start();
+//     Timber::render('partial/teaser.twig', $context);
+//     return ob_get_clean();
+// });
 
 
 
@@ -89,6 +89,13 @@ function mytheme_enqueue_styles() {
     // wp_enqueue_style('teaser-styles', get_template_directory_uri() . '/assets/css/teaser.css');
 }
 add_action('wp_enqueue_scripts', 'mytheme_enqueue_styles');
+
+function remove_auto_read_more( $excerpt ) {
+    $excerpt = preg_replace('/<a.*?class="more-link".*?>.*?<\/a>/i', '', $excerpt);
+    return $excerpt;
+}
+add_filter( 'get_the_excerpt', 'remove_auto_read_more' );
+
 
 
 

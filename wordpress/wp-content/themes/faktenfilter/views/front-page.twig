@@ -1,32 +1,6 @@
+
+
 {# {% extends "base.twig" %}
-
-{% block content %}
-    <h2>Aktuelle Faktenfilter</h2>
-    <div class="l-cards">
-        {% for post in posts %}
-            {% include "partial/teaser.twig" with {post:post} %}
-        {% endfor %}
-    </div>   
-    <div class="l-recoms">
-        {% for post in posts %}
-            {% include "partial/recommendation.twig" with {post:post} %}
-        {% endfor %}
-    </div> 
-{% endblock %} #}
-
-{# <section class="allgemein-section">
-    {% for post in allgemein_posts %}
-        {% include 'partial/teaser.twig' with { post: post } %}
-    {% endfor %}
-</section>
-
-<section class="empfehlung-section">
-    {% for post in empfehlung_post %}
-        {% include 'partial/recommendation.twig' with { post: post } %}
-    {% endfor %}
-</section> #}
-
-{% extends "base.twig" %}
 
 {% block content %}
 
@@ -58,6 +32,53 @@
     <div class="l-cards">
 {% include 'partial/mitreden.twig' with { post: leserbrief_page } %}
     </div>
+        <div class="l-cards">
+{% include 'partial/mitreden.twig' with { post: vorschlag_page } %}
+    </div>
 </div>
 
+{% endblock %} #}
+
+{% extends "base.twig" %}
+
+{% block content %}
+    
+    <div class="page-content">
+        {{ post.content }}  <!-- This will display the Gutenberg content from the page -->
+    </div>
+
+    <div class="section">
+        <h2>Aktuelle Faktenfilter</h2>
+        <div class="l-cards">
+            {% for post in allgemein_posts %}
+                {% include "partial/teaser.twig" with { post: post } %}
+            {% else %}
+                <p>Keine "Allgemein"-Beiträge gefunden.</p>
+            {% endfor %}
+        </div>   
+    </div>
+
+    <div class="section">
+        <h2>Hörenswert</h2>
+        <div class="l-cards">
+            {% set first_empfehlung = empfehlung_post|first %}
+            {% if first_empfehlung %}
+                {% include "partial/recommendation.twig" with { post: first_empfehlung } %}
+            {% else %}
+                <p>Keine "Empfehlung"-Beiträge gefunden.</p>
+            {% endif %}
+        </div> 
+    </div>
+
+    <div class="section">
+        <h2>Mitreden</h2>
+        <div class="l-cards">
+            {% include 'partial/mitreden.twig' with { post: leserbrief_page } %}
+        </div>
+        <div class="l-cards">
+            {% include 'partial/mitreden.twig' with { post: vorschlag_page } %}
+        </div>
+    </div>
+
 {% endblock %}
+

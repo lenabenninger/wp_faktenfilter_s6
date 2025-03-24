@@ -151,13 +151,21 @@ function display_posts_radio_buttons($atts) {
     $output = '';
 
     // Loop through the posts and create radio buttons
+    // foreach ($posts as $post) {
+    //     $output .= '<label class="select-post">';
+    //     $output .= '<input type="radio" name="selected_post" value="' . esc_attr($post->ID) . '" class="select-post-circle">';
+    //     $output .= esc_html($post->post_title);
+    //     $output .= '</label><br>';
+    // }
     foreach ($posts as $post) {
-        $output .= '<label>';
-        // Add the class .select-post to the radio button
-        $output .= '<input type="radio" name="selected_post" value="' . esc_attr($post->ID) . '" class="select-post">';
+        $post_id = esc_attr($post->ID);
+        $output .= '<input type="radio" id="post-' . $post_id . '" name="selected_post" value="' . $post_id . '" class="select-post-circle">';
+        $output .= '<label for="post-' . $post_id . '" class="select-post">';
         $output .= esc_html($post->post_title);
         $output .= '</label><br>';
     }
+    
+    
 
     return $output;
 }

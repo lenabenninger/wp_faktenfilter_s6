@@ -2,7 +2,7 @@
 
 {% block content %}
     
-    <div class="page-content">
+    {# <div class="page-content">
         {{ post.content }}  <!-- This will display the Gutenberg content from the page -->
     </div>
 
@@ -10,11 +10,35 @@
         <h2>Aktuelle Faktenfilter</h2>
         <div class="l-cards">
             {% for post in allgemein_posts %}
-                {% include "partial/teaser.twig" with { post: post } %}
+                {% include "partial/teaser-long.twig" with { post: post } %}
             {% else %}
                 <p>Keine "Allgemein"-Beiträge gefunden.</p>
             {% endfor %}
         </div>   
-    </div>
-
+    </div> #}
+    <div class="section">
+    <h2>Faktenfilter</h2>
+    <div class="l-cards-faktenfilter">
+    {% for post in posts %}
+  {% if loop.index <= 3 %}
+    {# Show 3 teaser.twig components first #}
+    {% include 'partial/teaser.twig' with {'post': post} %}
+  {% elseif loop.index == 4 %}
+    {# Show 1 teaser-wide-inside.twig after 3 teasers #}
+    {% include 'partial/teaser-wide-inside.twig' with {'post': post} %}
+  {% elseif loop.index == 5 %}
+    {# Show 1 teaser-medium.twig after the wide teaser #}
+    {% include 'partial/teaser-medium.twig' with {'post': post} %}
+  {% elseif loop.index <= 7 %}
+    {# Show 2 more teaser.twig components #}
+    {% include 'partial/teaser.twig' with {'post': post} %}
+  {% elseif loop.index == 8 %}
+    {# Show 1 more teaser-wide-inside.twig #}
+    {% include 'partial/teaser-wide-inside.twig' with {'post': post} %}
+  {% endif %}
+{% endfor %}
+</div>
+</div>
 {% endblock %}
+
+

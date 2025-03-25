@@ -257,24 +257,34 @@ p {
   display: none;
 }
 
-/* .l-cards-faktenfilter {
+.l-cards-faktenfilter {
   display: flex;
   flex-wrap: wrap;
-} */
+}
 
 .l-cards-faktenfilter .card-long {
   flex: 1;
-  max-width: 30%;
+  width: 30%;
 }
 
 /* New Styles for Flex and Aspect Ratio */
-.card-wide-inside {
+.card-wide-inside,
+.card-medium {
   position: relative;
-  flex: 2; /* Makes the card take twice as much space as other flex items */
   display: flex;
   flex-direction: column;
-  aspect-ratio: 3 / 2; /* Ensures the card has a 1:2 width to height ratio */
   overflow: hidden; /* Prevents the image from overflowing */
+}
+.card-wide-inside {
+  aspect-ratio: 3 / 2; /* Ensures the card has a 1:2 width to height ratio */
+  width: 60%;
+  flex: 1 1 60%;
+}
+
+.card-medium {
+  aspect-ratio: 4 / 3; /* Ensures the card has a 1:2 width to height ratio */
+  width: 30%;
+  flex: 1 1 30%;
 }
 
 .card-thumbnail {
@@ -288,4 +298,33 @@ p {
   width: 100%;
   height: 100%; /* Ensures it covers the entire container */
   object-fit: cover; /* Ensures the image covers the container without distortion */
+}
+
+.l-cards-faktenfilter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Add spacing between rows */
+  width: 100%;
+  align-items: stretch;
+}
+
+/* Card styles for each individual card */
+.l-cards-faktenfilter .card-long {
+  flex: 1 1 30%; /* Allow the card to take 30% of the container's width */
+  margin-bottom: 20px; /* Space between rows */
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .l-cards-faktenfilter .card-long {
+    flex: 1 1 100%; /* Stack cards on smaller screens */
+  }
+}
+
+.card-recom-text {
+  flex: 1 1 30%; /* Ensures it grows to the same height as other items */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: auto; /* Remove height: 100% to avoid conflict */
 }

@@ -3,7 +3,6 @@
 Template Name: Faktenfilter
 */
 
-// Include Timber
 use Timber\Timber;
 
 // Get the context
@@ -16,6 +15,21 @@ $args = [
 ];
 $context['posts'] = Timber::get_posts($args);
 
-// Render the template
-Timber::render('faktenfilter.twig', $context);
+// Fetch "Leserbrief" page by slug
+$page = get_page_by_path('leserbrief');
+if ($page) {
+    $context['leserbrief_page'] = Timber::get_post($page->ID);
+} else {
+    error_log('Page "leserbrief" not found!');
+}
 
+// Fetch "Vorschlag" page by slug
+$page = get_page_by_path('vorschlag');
+if ($page) {
+    $context['vorschlag_page'] = Timber::get_post($page->ID);
+} else {
+    error_log('Page "vorschlag" not found!');
+}
+
+// Render the template **AFTER** adding all data to context
+Timber::render('faktenfilter.twig', $context);

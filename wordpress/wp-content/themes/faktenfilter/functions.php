@@ -147,25 +147,25 @@ function display_posts_radio_buttons($atts) {
         return '<p>No posts found in the "Allgemein" category.</p>';
     }
 
-    // Start the output for radio buttons
-    $output = '';
+   // Fetch all posts
+   $posts = get_posts([
+    'posts_per_page' => -1, // Get all posts
+    'post_type'      => 'post', // Optional: specify the post type
+]);
 
-    // Loop through the posts and create radio buttons
-    // foreach ($posts as $post) {
-    //     $output .= '<label class="select-post">';
-    //     $output .= '<input type="radio" name="selected_post" value="' . esc_attr($post->ID) . '" class="select-post-circle">';
-    //     $output .= esc_html($post->post_title);
-    //     $output .= '</label><br>';
-    // }
-    foreach ($posts as $post) {
-        $post_id = esc_attr($post->ID);
-        $output .= '<input type="radio" id="post-' . $post_id . '" name="selected_post" value="' . $post_id . '" class="select-post-circle">';
-        $output .= '<label for="post-' . $post_id . '" class="select-post">';
-        $output .= esc_html($post->post_title);
-        $output .= '</label><br>';
-    }
-    
-    
+// Start the output for radio buttons
+$output = '';
+
+// Loop through the posts and create radio buttons
+foreach ($posts as $post) {
+    $post_id = esc_attr($post->ID);
+    $output .= '<input type="radio" id="post-' . $post_id . '" name="selected_post" value="' . $post_id . '" class="select-post-circle">';
+    $output .= '<label for="post-' . $post_id . '" class="select-post">';
+    $output .= esc_html($post->post_title);
+    $output .= '</label><br>';
+}
+
+return $output;
 
     return $output;
 }

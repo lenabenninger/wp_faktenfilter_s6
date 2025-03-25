@@ -1,0 +1,14 @@
+
+  <div class="card-recom-info card-recom-text">
+  <div>
+    {% set parts = post.content|split('<p class="page-description-invisible">') %}
+    {% if parts|length > 1 %}
+      {% set after_p = parts[1]|split('</p>') %}
+      <h3>{{ after_p[0]|striptags }}</h3>
+    {% endif %}
+</div>
+    <div class="card-interaction-no-like">
+      <a class="cta cta-dark" href="{{ leserbrief_page.link }}">Mehr lesen</a>
+    </div>
+  </div>
+

@@ -24,6 +24,19 @@ main {
   }
 }
 
+input[type="radio"] {
+  display: none;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+ul li {
+  margin-bottom: 20px;
+}
+
 h1,
 h2,
 h3,
@@ -143,7 +156,9 @@ p {
 }
 
 .cta,
-.select-post {
+.select-post,
+.link-recom::placeholder,
+.link-recom {
   display: flex;
   height: 59px;
   padding: 0 20px;
@@ -155,7 +170,35 @@ p {
   text-transform: uppercase;
 }
 
-.cta-light {
+.link-recom,
+.input-long-p {
+  align-items: flex-start;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: var(--orange-lightlight, #fff9f5);
+  box-shadow: 0px 0px 25px 0px rgba(190, 74, 0, 0.15);
+  color: var(--black);
+}
+
+.input-long-p {
+  display: flex;
+  padding: 0 20px;
+  align-items: center;
+  font-family: "Oswald";
+  font-size: 23px;
+  font-weight: 300;
+  line-height: -50;
+  text-transform: uppercase;
+}
+
+.link-recom::placeholder,
+.input-long-p::placeholder {
+  color: var(--orange-medium);
+}
+
+.cta-light,
+.select-anonymity {
   justify-content: flex-end;
   color: var(--black);
   background: var(--orange-medium);
@@ -166,6 +209,31 @@ p {
   color: var(--orange-light);
   background-color: var(--orange-dark);
   flex-grow: 1;
+}
+
+.select-anonymity {
+  display: flex;
+}
+
+.radio-container {
+  flex: 1;
+  color: var(--black);
+  text-align: right;
+  font-family: "Oswald";
+  font-size: 23px;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+.select-anonymity label {
+  padding: 12px;
+  height: 100%;
+  width: 100%;
+}
+
+.select-anonymity input[type="radio"]:checked + label {
+  background-color: var(--orange-dark);
+  color: var(--orange-light);
 }
 
 .card-interaction {
@@ -264,7 +332,6 @@ p {
 
 .l-cards-faktenfilter .card-long {
   flex: 1;
-  /* width: 30%; */
 }
 
 /* New Styles for Flex and Aspect Ratio */
@@ -275,14 +342,22 @@ p {
   flex-direction: column;
   overflow: hidden; /* Prevents the image from overflowing */
 }
+
+.card-wide-inside,
+.card-medium {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .card-wide-inside {
-  aspect-ratio: 3 / 2; /* Ensures the card has a 1:2 width to height ratio */
-  /* width: 60%; */
-  /* flex: 1 1 60%; */
+  aspect-ratio: 3 / 2;
+  width: 100%;
 }
 
 .card-medium {
-  aspect-ratio: 4 / 3; /* Ensures the card has a 1:2 width to height ratio */
+  aspect-ratio: 4 / 3;
+  width: 100%;
 }
 
 .card-thumbnail {
@@ -331,4 +406,9 @@ p {
 .card-wide-inside,
 .card-medium {
   width: 100%; /* Ensures it fills the Bootstrap column */
+}
+
+.row > .col-4,
+.row > .col-8 {
+  margin-bottom: 95px;
 }

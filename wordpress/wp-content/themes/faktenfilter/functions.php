@@ -131,14 +131,13 @@ add_filter( 'get_the_excerpt', 'remove_auto_read_more' );
 function display_posts_radio_buttons($atts) {
     // Set up defaults
     $atts = shortcode_atts([
-        'number' => 5, // Number of posts to display (default to 5)
         'category' => 'Allgemein', // Category name to filter by
     ], $atts);
 
-    // Query for posts in the "Allgemein" category
+    // Query for all posts in the "Allgemein" category
     $args = [
-        'posts_per_page' => $atts['number'],
         'category_name' => $atts['category'], // Filter by category slug
+        'posts_per_page' => -1, // Set to -1 to get all posts
     ];
     $posts = get_posts($args);
 
@@ -147,26 +146,21 @@ function display_posts_radio_buttons($atts) {
         return '<p>No posts found in the "Allgemein" category.</p>';
     }
 
-   // Fetch all posts
-   $posts = get_posts([
-    'posts_per_page' => -1, // Get all posts
-    'post_type'      => 'post', // Optional: specify the post type
-]);
-
-// Start the output for radio buttons
-$output = '';
-
-// Loop through the posts and create radio buttons
-foreach ($posts as $post) {
-    $post_id = esc_attr($post->ID);
-    $output .= '<input type="radio" id="post-' . $post_id . '" name="selected_post" value="' . $post_id . '" class="select-post-circle">';
-    $output .= '<label for="post-' . $post_id . '" class="select-post">';
-    $output .= esc_html($post->post_title);
-    $output .= '</label><br>';
-}
-
-return $output;
+    // Start the output for both list and radio buttons
+    $output = '<ul>';
+    foreach ($posts as $post) {
+        // Generate the list item with a radio button
+        $post_id = esc_attr($post->ID);
+        $output .= '<li>';
+        $output .= '<input type="radio" id="post-' . $post_id . '" name="selected_post" value="' . $post_id . '" class="select-post-circle">';
+        $output .= '<label for="post-' . $post_id . '" class="select-post">';
+        $output .= esc_html($post->post_title);
+        $output .= '</label>';
+        $output .= '</li>';
+    }
+    $output .= '</ul>';
 
     return $output;
 }
 add_shortcode('posts_radio_buttons', 'display_posts_radio_buttons');
+

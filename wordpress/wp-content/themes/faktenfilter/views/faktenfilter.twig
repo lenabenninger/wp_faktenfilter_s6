@@ -18,6 +18,9 @@
         </div>   
     </div> #}
 <div class="section container">
+
+
+
     <h2>Faktenfilter</h2>
     <div class="row">
         {% for post in posts %}
@@ -50,11 +53,12 @@
         {% endfor %}
 
         {# Manually add teaser-wide-inside.twig at index 9 (col-8) #}
-        {% if posts|length >= 8 %}
-            <div class="col-8">
-                {% include 'partial/teaser-wide-inside.twig' with {'post': posts[8]} %}
-            </div>
-        {% endif %}
+   {% if posts|length >= 8 %}
+    <div class="col-8">
+        {% include 'partial/teaser-wide-inside.twig' with {'post': posts[5]} %}
+    </div>
+{% endif %}
+
 
         {# Manually add text-only.twig at index 10 (col-4) #}
         <div class="col-4">

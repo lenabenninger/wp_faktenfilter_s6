@@ -39,7 +39,7 @@
 
   //Fonts
   function my_custom_fonts() {
-    wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Uncial+Antiqua&display=swap');
+    wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Quicksand:wght@300..700&display=swap');
 }
 add_action('wp_enqueue_scripts', 'my_custom_fonts');
 
@@ -163,4 +163,23 @@ function display_posts_radio_buttons($atts) {
     return $output;
 }
 add_shortcode('posts_radio_buttons', 'display_posts_radio_buttons');
+
+//categories for pages to group them in menu
+function create_page_category_taxonomy() {
+    // Register custom taxonomy for pages
+    register_taxonomy(
+        'page_category', // Taxonomy name
+        'page', // Apply to pages
+        array(
+            'label' => __('Page Categories'),
+            'rewrite' => array('slug' => 'page-category'),
+            'hierarchical' => true, // Optional: Create parent-child categories
+            'show_ui' => true,
+            'show_admin_column' => true,
+            'query_var' => true,
+            'show_in_rest' => true, // Enable for Gutenberg
+        )
+    );
+}
+add_action('init', 'create_page_category_taxonomy');
 

@@ -1,0 +1,20 @@
+{% extends "base.twig" %}
+
+{% block content %}
+    
+    <div class="page-content">
+        {{ post.content }}  <!-- This will display the Gutenberg content from the page -->
+    </div>
+
+    <div class="section">
+        <h2>Aktuelle Faktenfilter</h2>
+        <div class="l-cards">
+            {% for post in allgemein_posts %}
+                {% include "partial/teaser.twig" with { post: post } %}
+            {% else %}
+                <p>Keine "Allgemein"-Beiträge gefunden.</p>
+            {% endfor %}
+        </div>   
+    </div>
+
+{% endblock %}

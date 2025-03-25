@@ -1,0 +1,93 @@
+{# {% extends "base.twig" %}
+
+{% block content %}
+    
+    <div class="page-content">
+        {{ post.content }}  <!-- This will display the Gutenberg content from the page -->
+    </div>
+
+    <div class="section">
+        <h2>Hörenswert</h2>
+        <div class="l-cards">
+            {% set podcast_posts = posts|filter(p => p.categories|length > 0 and p.categories[0].name == 'podcast') %}
+
+            {% if podcast_posts is not empty %}
+                {% for post in podcast_posts %}
+                    {% include "partial/recommendation.twig" with { post: post } %}
+                {% endfor %}
+            {% else %}
+                <p>Keine "Podcast"-Beiträge gefunden.</p>
+            {% endif %}
+        </div> 
+    </div>
+
+{% endblock %} #}
+
+{% extends "base.twig" %}
+
+{% block content %}
+    
+    <div class="page-content">
+        {{ post.content }}  <!-- This will display the Gutenberg content from the page -->
+    </div>
+
+    <div class="section">
+        <h2>Hörenswert</h2>
+        <div class="l-cards-column">
+            {% set podcast_posts = [] %}
+
+            {% for p in posts %}
+                {% set is_podcast = false %}  {# Flag to check if the post is a podcast #}
+                
+                {% for category in p.categories %}
+                    {% if category.name == 'podcast' %}
+                        {% set is_podcast = true %}
+                    {% endif %}
+                {% endfor %}
+
+                {% if is_podcast %}
+                    {% set podcast_posts = podcast_posts|merge([p]) %}
+                {% endif %}
+            {% endfor %}
+
+            {% if podcast_posts is not empty %}
+                {% for post in podcast_posts %}
+                    {% include "partial/recommendation.twig" with { post: post } %}
+                {% endfor %}
+            {% else %}
+                <p>Keine "Podcast"-Beiträge gefunden.</p>
+            {% endif %}
+        </div> 
+    </div>
+
+     <div class="section">
+        <h2>Influencer</h2>
+        <div class="l-cards-column">
+            {% set influencer_posts = [] %}
+
+            {% for p in posts %}
+                {% set is_influencer = false %}  {# Flag to check if the post is an influencer #}
+                
+                {% for category in p.categories %}
+                    {% if category.name == 'influencer' %}
+                        {% set is_influencer = true %}
+                    {% endif %}
+                {% endfor %}
+
+                {% if is_influencer %}
+                    {% set influencer_posts = influencer_posts|merge([p]) %}
+                {% endif %}
+            {% endfor %}
+
+            {% if influencer_posts is not empty %}
+                {% for post in influencer_posts %}
+                    {% include "partial/recommendation.twig" with { post: post } %}
+                {% endfor %}
+            {% else %}
+                <p>Keine "Influencer"-Beiträge gefunden.</p>
+            {% endif %}
+        </div> 
+    </div>
+
+{% endblock %}
+

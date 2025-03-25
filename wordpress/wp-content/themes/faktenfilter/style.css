@@ -264,7 +264,7 @@ p {
 
 .l-cards-faktenfilter .card-long {
   flex: 1;
-  width: 30%;
+  /* width: 30%; */
 }
 
 /* New Styles for Flex and Aspect Ratio */
@@ -277,14 +277,12 @@ p {
 }
 .card-wide-inside {
   aspect-ratio: 3 / 2; /* Ensures the card has a 1:2 width to height ratio */
-  width: 60%;
-  flex: 1 1 60%;
+  /* width: 60%; */
+  /* flex: 1 1 60%; */
 }
 
 .card-medium {
   aspect-ratio: 4 / 3; /* Ensures the card has a 1:2 width to height ratio */
-  width: 30%;
-  flex: 1 1 30%;
 }
 
 .card-thumbnail {
@@ -303,14 +301,14 @@ p {
 .l-cards-faktenfilter {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px; /* Add spacing between rows */
+  gap: 20px;
   width: 100%;
   align-items: stretch;
 }
 
 /* Card styles for each individual card */
 .l-cards-faktenfilter .card-long {
-  flex: 1 1 30%; /* Allow the card to take 30% of the container's width */
+  /* flex: 1 1 30%; */
   margin-bottom: 20px; /* Space between rows */
 }
 
@@ -322,9 +320,15 @@ p {
 }
 
 .card-recom-text {
-  flex: 1 1 30%; /* Ensures it grows to the same height as other items */
+  /* flex: 1 1 30%; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: auto; /* Remove height: 100% to avoid conflict */
+}
+
+.card-long,
+.card-wide-inside,
+.card-medium {
+  width: 100%; /* Ensures it fills the Bootstrap column */
 }

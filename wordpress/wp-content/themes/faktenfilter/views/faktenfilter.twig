@@ -17,33 +17,54 @@
             {% endfor %}
         </div>   
     </div> #}
-    <div class="section">
+<div class="section container">
     <h2>Faktenfilter</h2>
-    <div class="l-cards-faktenfilter">
-    {% for post in posts %}
-  {% if loop.index <= 3 %}
-    {# Show 3 teaser.twig components first #}
-    {% include 'partial/teaser.twig' with {'post': post} %}
-  {% elseif loop.index == 4 %}
-    {# Show 1 teaser-wide-inside.twig after 3 teasers #}
-    {% include 'partial/teaser-wide-inside.twig' with {'post': post} %}
-  {% elseif loop.index == 5 %}
-    {# Show 1 teaser-medium.twig after the wide teaser #}
-    {% include 'partial/teaser-medium.twig' with {'post': post} %}
-  {% elseif loop.index <= 7 %}
-    {# Invite give recommendation #}
-            {% include 'partial/text-only.twig' with { post: leserbrief_page } %}
-    {# Show 2 more teaser.twig components #}
-    {% include 'partial/teaser.twig' with {'post': post} %}
-  {% elseif loop.index == 8 %}
-    {# Show 1 more teaser-wide-inside.twig #}
-    {% include 'partial/teaser-wide-inside.twig' with {'post': post} %}
+    <div class="row">
+        {% for post in posts %}
+            {% if loop.index <= 3 %}
+                {# Show 3 teaser.twig components first (col-4 each) #}
+                <div class="col-4">
+                    {% include 'partial/teaser.twig' with {'post': post} %}
+                </div>
+            {% elseif loop.index == 4 %}
+                {# Show 1 teaser-medium.twig (col-4) #}
+                <div class="col-4">
+                    {% include 'partial/teaser-medium.twig' with {'post': post} %}
+                </div>
+            {% elseif loop.index == 5 %}
+                {# Show 1 teaser-wide-inside.twig (col-8) #}
+                <div class="col-8">
+                    {% include 'partial/teaser-wide-inside.twig' with {'post': post} %}
+                </div>
+            {% elseif loop.index == 6 %}
+                {# Show 1 text-only.twig (col-4) #}
+                <div class="col-4">
+                    {% include 'partial/text-only.twig' with {'post': leserbrief_page} %}
+                </div>
+            {% elseif loop.index <= 8 %}
+                {# Show 2 more teaser.twig components (col-4 each) #}
+                <div class="col-4">
+                    {% include 'partial/teaser.twig' with {'post': post} %}
+                </div>
+            {% endif %}
+        {% endfor %}
 
-     {% include 'partial/text-only.twig' with { post: vorschlag_page } %}
-  {% endif %}
-{% endfor %}
+        {# Manually add teaser-wide-inside.twig at index 9 (col-8) #}
+        {% if posts|length >= 8 %}
+            <div class="col-8">
+                {% include 'partial/teaser-wide-inside.twig' with {'post': posts[8]} %}
+            </div>
+        {% endif %}
+
+        {# Manually add text-only.twig at index 10 (col-4) #}
+        <div class="col-4">
+            {% include 'partial/text-only.twig' with {'post': vorschlag_page} %}
+        </div>
+    </div>
 </div>
-</div>
+
+
+
 {% endblock %}
 
 

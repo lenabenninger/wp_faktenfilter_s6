@@ -9,27 +9,21 @@
     <link rel="profile" href="http://gmpg.org/xfn/11">
 
     {{ function('wp_head') }}
-
-    {% set homepage = Timber.get_post(site.options.page_on_front) %}
-    <style>
-        .site-header {
-            background: url('{{ homepage.thumbnail.src|default(site.theme.link ~ "/fallback-image.jpg") }}') no-repeat center center;
-            background-size: cover;
-            height: 300px;
-            color: white;
-        }
-    </style>
-    <p>Background Image URL: {{ homepage.thumbnail.src|default(site.theme.link ~ "/fallback-image.jpg") }}</p>
-
 </head>
 <body>
     <header class="site-header">
+        {# {% if post.featured_image is defined %}
+            style="background-image: url('{{ post.featured_image.src }}');"
+        {% else %}
+            style="background-color: #ccc;" 
+        {% endif %}
+    >
         <div class="container">
             <h3>Lass uns gemeinsam die Zukunft bestimmen</h3>
-            <h1 class="title-header">Faktenfilter</h1>
-        </div>
+            <h1 class="title-header break-word">
+              Faktenfilter
+            </h1>
+        </div> #}
     </header>
 </body>
 </html>
-
-

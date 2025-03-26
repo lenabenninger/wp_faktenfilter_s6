@@ -17,8 +17,12 @@
   display: none;
 } */
 
+.break-word {
+  word-break: break-word;
+}
+
 .site-header h1 {
-  font-size: 190px;
+  font-size: 150px;
   font-weight: 400;
   line-height: 161px;
   color: var(--black);
@@ -476,4 +480,34 @@ p {
 
 .mb-95 {
   margin-bottom: 95px;
+}
+
+footer {
+  background: var(--orange-dark);
+  padding: 50px 0 95px;
+}
+
+footer h3,
+footer p {
+  color: var(--orange-light);
+}
+
+.slogan-footer {
+  line-height: 0;
+}
+
+.slogan-footer,
+.social-link {
+  font-family: Oswald;
+  font-size: 23px;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+.social-link {
+  color: var(--black, #2a1000);
+}
+
+.copyright {
+  text-align: end;
 }

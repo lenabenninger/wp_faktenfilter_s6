@@ -17,18 +17,18 @@ $context['posts'] = Timber::get_posts($args);
 
 // Fetch "Leserbrief" page by slug
 $page = get_page_by_path('leserbrief');
-if ($page) {
+if ($page && isset($page->ID)) {
     $context['leserbrief_page'] = Timber::get_post($page->ID);
 } else {
-    error_log('Page "leserbrief" not found!');
+    error_log('Page "leserbrief" not found or invalid!');
 }
 
 // Fetch "Vorschlag" page by slug
 $page = get_page_by_path('vorschlag');
-if ($page) {
+if ($page && isset($page->ID)) {
     $context['vorschlag_page'] = Timber::get_post($page->ID);
 } else {
-    error_log('Page "vorschlag" not found!');
+    error_log('Page "vorschlag" not found or invalid!');
 }
 
 // Render the template **AFTER** adding all data to context

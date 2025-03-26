@@ -33,11 +33,10 @@
 			</div>
 		</article>
 	</main>
+        <!-- footer -->
+<footer>
+    {% include 'footer.twig' with { 'menu_1': menu_1 } %}
+</footer>
 
-		{% block footer %}	
-				{% include 'footer.twig' %}
-			{{ function('wp_footer') }}
-		{% endblock %}
-	<!-- start: main content are -->
 	</body>
 </html>

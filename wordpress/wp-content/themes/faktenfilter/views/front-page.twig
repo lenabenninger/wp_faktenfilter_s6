@@ -49,12 +49,14 @@
 
     <div class="section">
         <h2>Aktuelle Faktenfilter</h2>
-        <div class="l-cards">
+        <div class="container">
+        <div class="row">
             {% for post in allgemein_posts %}
                 {% include "partial/teaser.twig" with { post: post } %}
             {% else %}
                 <p>Keine "Allgemein"-Beiträge gefunden.</p>
             {% endfor %}
+        </div>  
         </div>   
     </div>
 
@@ -80,6 +82,12 @@
             {% include 'partial/mitreden-reverse.twig' with { post: vorschlag_page } %}
         </div>
         </div>
+    </div>
+
+    <div class="section">
+        <h2>Newsletter</h2>
+        <p class="highlighted">Bleib immer auf dem Laufenden! Abonniere unseren Newsletter für die neuesten Updates und spannende Inhalte.</p>
+        <input class="link-recom" type="text" id="newsletter-mail" name="newsletter-mail" placeholder="e-mail">
     </div>
 
 {% endblock %}

@@ -182,4 +182,3 @@ function create_page_category_taxonomy() {
     );
 }
 add_action('init', 'create_page_category_taxonomy');
-

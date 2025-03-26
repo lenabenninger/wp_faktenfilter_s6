@@ -10,15 +10,17 @@
 
     {{ function('wp_head') }}
 
-    {% set homepage = Timber.get_posts({post_type: 'page', name: 'startseite'})[0] %}
+    {% set homepage = Timber.get_post(site.options.page_on_front) %}
     <style>
         .site-header {
-            background: url('{{ startseite.thumbnail.src|default('fallback-image.jpg') }}') no-repeat center center;
+            background: url('{{ homepage.thumbnail.src|default(site.theme.link ~ "/fallback-image.jpg") }}') no-repeat center center;
             background-size: cover;
             height: 300px;
             color: white;
         }
     </style>
+    <p>Background Image URL: {{ homepage.thumbnail.src|default(site.theme.link ~ "/fallback-image.jpg") }}</p>
+
 </head>
 <body>
     <header class="site-header">
@@ -29,4 +31,5 @@
     </header>
 </body>
 </html>
+
 

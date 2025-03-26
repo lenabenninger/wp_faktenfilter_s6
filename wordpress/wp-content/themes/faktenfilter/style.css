@@ -13,18 +13,25 @@
   --black: #2a1000;
 }
 
-.site-header {
-  background: url('{{ get_page_by_title("Startseite").thumbnail.src }}')
-    no-repeat center center;
-  background-size: cover;
-  height: 300px;
-}
+/* .navigation {
+  display: none;
+} */
 
 .site-header h1 {
   font-size: 190px;
   font-weight: 400;
   line-height: 161px;
   color: var(--black);
+}
+
+.title-header {
+  color: var(--black, #2a1000);
+  font-family: "Oswald", sans-serif;
+  font-size: 190px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 161px; /* 84.737% */
+  text-transform: uppercase;
 }
 
 .navigation {
@@ -467,7 +474,6 @@ p {
   width: 100%; /* Ensures it fills the Bootstrap column */
 }
 
-.row > .col-4,
-.row > .col-8 {
+.mb-95 {
   margin-bottom: 95px;
 }

@@ -42,7 +42,7 @@
 {% extends "base.twig" %}
 
 {% block content %}
-    
+
     <div class="page-content">
         {{ post.content }}  <!-- This will display the Gutenberg content from the page -->
     </div>
@@ -62,7 +62,7 @@
 
     <div class="section">
         <h2>Hörenswert</h2>
-        <div class="l-cards">
+        <div class="container">
             {% set first_empfehlung = empfehlung_post|first %}
             {% if first_empfehlung %}
                 {% include "partial/recommendation.twig" with { post: first_empfehlung } %}
@@ -74,11 +74,9 @@
 
     <div class="section">
         <h2>Mitreden</h2>
-        <div class="l-cards-column">
-        <div class="l-cards">
+        <div class="container">
             {% include 'partial/mitreden.twig' with { post: leserbrief_page } %}
-        </div>
-        <div class="l-cards">
+
             {% include 'partial/mitreden-reverse.twig' with { post: vorschlag_page } %}
         </div>
         </div>

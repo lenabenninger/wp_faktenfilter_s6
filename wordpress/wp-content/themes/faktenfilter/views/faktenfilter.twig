@@ -26,22 +26,22 @@
         {% for post in posts %}
             {% if loop.index <= 3 %}
                 {# Show 3 teaser.twig components first (col-4 each) #}
-          
+
                     {% include 'partial/teaser.twig' with {'post': post} %}
 
             {% elseif loop.index == 4 %}
                 {# Show 1 teaser-medium.twig (col-4) #}
-                <div class="col-4">
-                    {% include 'partial/teaser-medium.twig' with {'post': post} %}
+                <div class="col-12 col-md-6 col-lg-4 mb-95">
+                    {% include 'partial/teaser-wide-inside.twig' with {'post': post} %}
                 </div>
             {% elseif loop.index == 5 %}
                 {# Show 1 teaser-wide-inside.twig (col-8) #}
-                <div class="col-8">
+                <div class="col-8 mb-95">
                     {% include 'partial/teaser-wide-inside.twig' with {'post': post} %}
                 </div>
             {% elseif loop.index == 6 %}
                 {# Show 1 text-only.twig (col-4) #}
-                <div class="col-4">
+                <div class="col-4 mb-95">
                     {% include 'partial/text-only.twig' with {'post': leserbrief_page} %}
                 </div>
             {% elseif loop.index <= 8 %}

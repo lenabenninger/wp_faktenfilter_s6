@@ -209,7 +209,8 @@ p {
   background-color: transparent;
 }
 
-.card-long:hover h3 {
+.card-long:hover h3,
+.card-wide-inside:hover h3 {
   color: var(--orange-medium);
 }
 

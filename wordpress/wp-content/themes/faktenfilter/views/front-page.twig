@@ -1,71 +1,31 @@
-
-
-{# {% extends "base.twig" %}
-
-{% block content %}
-
-<div class="section">
-    <h2>Aktuelle Faktenfilter</h2>
-    <div class="l-cards">
-        {% for post in allgemein_posts %}
-            {% include "partial/teaser.twig" with { post: post } %}
-        {% else %}
-            <p>Keine "Allgemein"-Beiträge gefunden.</p>
-        {% endfor %}
-    </div>   
-</div>
-
-<div class="section">
-    <h2>Hörenswert</h2>
-    <div class="l-cards">
-        {% set first_empfehlung = empfehlung_post|first %}
-        {% if first_empfehlung %}
-            {% include "partial/recommendation.twig" with { post: first_empfehlung } %}
-        {% else %}
-            <p>Keine "Empfehlung"-Beiträge gefunden.</p>
-        {% endif %}
-    </div> 
-</div>
-
-<div class="section">
-    <h2>Mitreden</h2>
-    <div class="l-cards">
-{% include 'partial/mitreden.twig' with { post: leserbrief_page } %}
-    </div>
-        <div class="l-cards">
-{% include 'partial/mitreden.twig' with { post: vorschlag_page } %}
-    </div>
-</div>
-
-{% endblock %} #}
-
 {% extends "base.twig" %}
 
 {% block content %}
 
-    <div class="page-content">
-        {{ post.content }}  <!-- This will display the Gutenberg content from the page -->
-    </div>
+    {% if post is defined %}
+        <div class="page-content">
+            {{ post.content|raw }}  
+        </div>
+    {% endif %}
 
     <div class="section">
         <h2>Aktuelle Faktenfilter</h2>
         <div class="container">
-        <div class="row">
-            {% for post in allgemein_posts %}
-                {% include "partial/teaser.twig" with { post: post } %}
-            {% else %}
-                <p>Keine "Allgemein"-Beiträge gefunden.</p>
-            {% endfor %}
-        </div>  
+            <div class="row">
+                {% for allgemein_post in allgemein_posts %}
+                    {% include "partial/teaser.twig" with { post: allgemein_post } %}
+                {% else %}
+                    <p>Keine "Allgemein"-Beiträge gefunden.</p>
+                {% endfor %}
+            </div>  
         </div>   
     </div>
 
     <div class="section">
         <h2>Hörenswert</h2>
         <div class="container">
-            {% set first_empfehlung = empfehlung_post|first %}
-            {% if first_empfehlung %}
-                {% include "partial/recommendation.twig" with { post: first_empfehlung } %}
+            {% if empfehlung_post %}
+                {% include "partial/recommendation.twig" with { post: empfehlung_post } %}
             {% else %}
                 <p>Keine "Empfehlung"-Beiträge gefunden.</p>
             {% endif %}
@@ -75,18 +35,34 @@
     <div class="section">
         <h2>Mitreden</h2>
         <div class="container">
-            {% include 'partial/mitreden.twig' with { post: leserbrief_page } %}
-
-            {% include 'partial/mitreden-reverse.twig' with { post: vorschlag_page } %}
-        </div>
+            {% if leserbrief_page %}
+                {% include 'partial/mitreden.twig' with { post: leserbrief_page } %}
+            {% else %}
+                <p>Die Seite "Leserbrief" konnte nicht gefunden werden.</p>
+            {% endif %}
+            
+            {% if vorschlag_page %}
+                {% include 'partial/mitreden-reverse.twig' with { post: vorschlag_page } %}
+            {% else %}
+                <p>Die Seite "Vorschlag" konnte nicht gefunden werden.</p>
+            {% endif %}
         </div>
     </div>
 
     <div class="section">
         <h2>Newsletter</h2>
         <p class="highlighted">Bleib immer auf dem Laufenden! Abonniere unseren Newsletter für die neuesten Updates und spannende Inhalte.</p>
-        <input class="link-recom" type="text" id="newsletter-mail" name="newsletter-mail" placeholder="e-mail">
+        <form class="subscribe-newsletter" method="post" action="#">
+            <input class="link-recom" type="email" id="newsletter-mail" name="newsletter-mail" placeholder="E-Mail">
+            <button class="cta cta-dark" type="submit">Abonnieren</button>
+        </form>
     </div>
+
+    <!-- Debugging Output -->
+    {# <pre>{{ dump(allgemein_posts) }}</pre>
+    <pre>{{ dump(empfehlung_post) }}</pre>
+    <pre>{{ dump(leserbrief_page) }}</pre>
+    <pre>{{ dump(vorschlag_page) }}</pre> #}
 
 {% endblock %}
 

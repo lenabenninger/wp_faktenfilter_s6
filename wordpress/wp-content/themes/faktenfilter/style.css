@@ -4,6 +4,11 @@
  * Author: Upstatement and YOU!
 */
 
+.subscribe-newsletter {
+  display: flex;
+  gap: 20px;
+}
+
 :root {
   --base: #ff773c;
   --foreground: #000000;
@@ -13,9 +18,9 @@
   --black: #2a1000;
 }
 
-/* .navigation {
+.navigation {
   display: none;
-} */
+}
 
 .site-header h1 {
   font-size: 150px;
@@ -279,11 +284,24 @@ p {
   background: var(--orange-medium);
 }
 
+.cta-light:hover,
+.select-anonymity:hover {
+  justify-content: flex-end;
+  color: var(--orange-light);
+  background: var(--orange-dark);
+}
+
 .cta-dark {
   justify-content: flex-end;
   color: var(--orange-light);
   background-color: var(--orange-dark);
   flex-grow: 1;
+  border: none;
+}
+
+.cta-dark:hover {
+  color: var(--orange-dark);
+  background-color: var(--orange-medium);
 }
 
 .select-anonymity {
